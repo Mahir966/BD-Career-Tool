@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="bn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>বাংলাদেশ সরকারি চাকরি ও অবসর ক্যালকুলেটর | Bangladesh Career & Retirement Calculators</title>
+    <meta
+      name="description"
+      content="বাংলাদেশ সরকারি চাকরির অবসর, চাকরির বয়সসীমা, প্রতিরক্ষা ও ফিটনেস ক্যালকুলেটর — উৎসভিত্তিক নিয়ম, দ্বিভাষিক, সম্পূর্ণ ফ্রি। Bangladesh government job retirement, job age eligibility, defence & fitness calculators with sourced rules."
+    />
+    <meta name="theme-color" content="#006a4e" />
+    <meta name="color-scheme" content="light dark" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Bangladesh Government Career & Retirement Calculators" />
+    <meta
+      property="og:description"
+      content="Source-backed retirement age, job age eligibility, defence & fitness calculators for Bangladesh. Light/dark, Bangla/English, runs 100% locally."
+    />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      // Theme bootstrap — runs before first paint to avoid a flash of the wrong theme.
+      (function () {
+        try {
+          var stored = localStorage.getItem('bct-theme');
+          var mode = stored === 'light' || stored === 'dark' || stored === 'system' ? stored : 'system';
+          var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          var dark = mode === 'dark' || (mode === 'system' && prefersDark);
+          if (dark) document.documentElement.classList.add('dark');
+          document.documentElement.dataset.themeMode = mode;
+          var lang = localStorage.getItem('bct-lang');
+          if (lang === 'en' || lang === 'bn') document.documentElement.lang = lang;
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <noscript>এই অ্যাপটি চলতে JavaScript প্রয়োজন। This app requires JavaScript.</noscript>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

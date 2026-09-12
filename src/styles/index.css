@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+.dark {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Horizontal-overflow safety net (clip, so position:sticky keeps working) */
+html,
+body {
+  overflow-x: clip;
+  max-width: 100%;
+}
+img,
+svg,
+canvas {
+  max-width: 100%;
+  height: auto;
+}
+input,
+select,
+textarea {
+  max-width: 100%;
+}
+
+/* Institutional paper-grid backdrop (pure CSS — no images) */
+body {
+  background-color: #f7faf8;
+  background-image:
+    linear-gradient(to right, rgba(0, 106, 78, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 106, 78, 0.045) 1px, transparent 1px),
+    radial-gradient(1100px 420px at 85% -10%, rgba(0, 106, 78, 0.06), transparent 60%),
+    radial-gradient(900px 380px at -10% 8%, rgba(244, 42, 65, 0.035), transparent 55%);
+  background-size: 26px 26px, 26px 26px, 100% 100%, 100% 100%;
+}
+.dark body {
+  background-color: #020617;
+  background-image:
+    linear-gradient(to right, rgba(16, 185, 129, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(16, 185, 129, 0.05) 1px, transparent 1px),
+    radial-gradient(1100px 420px at 85% -10%, rgba(5, 150, 105, 0.08), transparent 60%),
+    radial-gradient(900px 380px at -10% 8%, rgba(244, 42, 65, 0.05), transparent 55%);
+}
+
+/* Native date controls in dark mode */
+.dark input[type='date']::-webkit-calendar-picker-indicator {
+  filter: invert(0.8);
+}
+
+/* Consistent number rendering */
+.font-mono,
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* details/summary reset */
+details > summary {
+  list-style: none;
+}
+details > summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Subtle entrance, disabled with reduced motion */
+@media (prefers-reduced-motion: no-preference) {
+  .animate-fade-up {
+    animation: fade-up 0.35s ease-out both;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Thin scrollbars in the rules tables */
+.scroll-thin {
+  scrollbar-width: thin;
+}
+.scroll-thin::-webkit-scrollbar {
+  height: 8px;
+}
+.scroll-thin::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background: rgba(100, 116, 139, 0.5);
+}
+
+/* Print: results only */
+@media print {
+  body {
+    background: #fff !important;
+  }
+  .no-print,
+  header[role='banner'] {
+    display: none !important;
+  }
+  .shadow-card,
+  .shadow-lift {
+    box-shadow: none !important;
+  }
+}
